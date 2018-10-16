@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Golf</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function fillArraySumAndAvg() {
+            var holes = [];
+            var sum = 0;
+            for(var i=0; i<18; i++) {
+                var score = getRandomNumber();
+                holes.push(score);
+                sum += score;
+            }
+            var avg = sum/holes.length;
+            var par = 0
+            $("#sum").val(sum);
+            $("#avg").val(avg);
+            $("#array").text(holes);
+            if(sum < 72) {
+                par = 72-sum;
+                $("#par").text("You shot " + par + " shots under par.");
+            } else if(sum > 72) {
+                par = sum-72;
+                $("#par").text("You shot " + par + " shots over par.");
+            } else {
+                $("#par").text("You shot even par.");
+            }
+            
+        }
+        function getRandomNumber() {
+            return Math.floor((Math.random()*7)+1);
+        }
+        
+        
+
+    </script>
+</head>
+<body>
+
+    <h1>Welcome to the Golf Simulator</h1>
+    <p id="array">this is where the array goes</p>
+    <p>sum: <input type="text" id="sum"></p>
+    <p>avg: <input type="text" id="avg"></p>
+    <button onclick="fillArraySumAndAvg()">FORE!</button>
+    <p id="par">Relation to par</p>
+
+    
+
+    
+</body>
+</html>
